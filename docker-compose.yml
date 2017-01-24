@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  redirector:
+    image: pottkinder/dnsblacklist
+#    volumes:
+#      - ./server:/server
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      POTTKINDER_REDIRECT: "https://www.agentur-pottkinder.de/"
