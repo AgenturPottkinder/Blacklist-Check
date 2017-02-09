@@ -322,8 +322,8 @@ func main() {
         domainCheck { url: "query.senderbase.org", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "sa.senderbase.org", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "rf.senderbase.org", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
-        domainCheck { url: "bl.score.senderscore.com", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
 // Removed because of missing documentation ( and perhaps only is for scoring )
+//        domainCheck { url: "bl.score.senderscore.com", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
 //        domainCheck { url: "score.senderscore.com", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "singular.ttk.pte.hu", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "blackholes.scconsult.com", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
@@ -383,8 +383,9 @@ func main() {
         domainCheck { url: "spam.spamrats.com", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "spamsources.fabel.dk", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "bl.spamstinks.com", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
-        domainCheck { url: "dnsbl.spfbl.net", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
-        domainCheck { url: "dul.pacifier.net", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
+// Removed as no documentation exists in a language I understand
+//        domainCheck { url: "dnsbl.spfbl.net", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
+//        domainCheck { url: "dul.pacifier.net", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "bl.suomispam.net", ipv4: true, ipv6: true, domain: false,  reverseIp: false},
         domainCheck { url: "dbl.suomispam.net", ipv4: false, ipv6: false, domain: true,  reverseIp: false},
         domainCheck { url: "gl.suomispam.net", ipv4: true, ipv6: true, domain: false,  reverseIp: false},
@@ -403,18 +404,20 @@ func main() {
         domainCheck { url: "rbl2.triumf.ca", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "wbl.triumf.ca", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "truncate.gbudb.net", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
-        domainCheck { url: "dunk.dnsbl.tuxad.de", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
-        domainCheck { url: "hartkore.dnsbl.tuxad.de", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
+// Removed because of missing documentation
+//        domainCheck { url: "dunk.dnsbl.tuxad.de", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
+//        domainCheck { url: "hartkore.dnsbl.tuxad.de", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "dnsbl-0.uceprotect.net", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "dnsbl-1.uceprotect.net", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "dnsbl-2.uceprotect.net", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "dnsbl-3.uceprotect.net", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "ubl.unsubscore.com", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
-        domainCheck { url: "black.uribl.com", ipv4: false, ipv6: false, domain: true,  reverseIp: false},
-        domainCheck { url: "grey.uribl.com", ipv4: false, ipv6: false, domain: true,  reverseIp: false},
-        domainCheck { url: "multi.uribl.com", ipv4: false, ipv6: false, domain: true,  reverseIp: false},
-        domainCheck { url: "red.uribl.com", ipv4: false, ipv6: false, domain: true,  reverseIp: false},
-        domainCheck { url: "white.uribl.com", ipv4: false, ipv6: false, domain: true,  reverseIp: false},
+// Removed because all checks fired: http://uribl.com/refused.shtml
+//        domainCheck { url: "black.uribl.com", ipv4: false, ipv6: false, domain: true,  reverseIp: false},
+//        domainCheck { url: "grey.uribl.com", ipv4: false, ipv6: false, domain: true,  reverseIp: false},
+//        domainCheck { url: "multi.uribl.com", ipv4: false, ipv6: false, domain: true,  reverseIp: false},
+//        domainCheck { url: "red.uribl.com", ipv4: false, ipv6: false, domain: true,  reverseIp: false},
+//        domainCheck { url: "white.uribl.com", ipv4: false, ipv6: false, domain: true,  reverseIp: false},
         domainCheck { url: "free.v4bl.org", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "ip.v4bl.org", ipv4: true, ipv6: false, domain: false,  reverseIp: false},
         domainCheck { url: "virbl.dnsbl.bit.nl", ipv4: true, ipv6: true, domain: false,  reverseIp: false},
@@ -434,6 +437,11 @@ func main() {
     }
 
 
+    if(len(os.Args) == 1) {
+        log.Fatal("No IP to check. please call script with at least 1 argument. './server 127.0.0.1 mailDomain.tld ::1'")
+    }
+
+
     ipToCheck := os.Args[1]
     domainToCheck := ""
     if(len(os.Args) > 2) {
@@ -442,10 +450,6 @@ func main() {
     ipv6ToCheck := ""
     if(len(os.Args) > 3) {
         ipv6ToCheck = os.Args[3]
-    }
-
-    if(ipToCheck == "") {
-        log.Fatal("No IP to check. please call script with at least 1 argument. './server 127.0.0.1 mailDomain.tld ::1'")
     }
 
     returnValue := 0
