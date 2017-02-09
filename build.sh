@@ -1,1 +1,1 @@
-docker build -t pottkinder/dnsblacklist .
+GOBIN=$(pwd)/bin go install src/server.go

@@ -2,9 +2,11 @@ version: '2'
 
 services:
   redirector:
-    image: pottkinder/dnsblacklist
-#    volumes:
-#      - ./server:/server
+    build: .
+#    image: pottkinder/dnsblacklist
+    volumes:
+      - ./src:/src
+      - ./bin:/build
     restart: always
     ports:
       - 8080:80

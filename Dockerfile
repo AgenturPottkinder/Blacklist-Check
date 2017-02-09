@@ -2,13 +2,13 @@ FROM debian
 MAINTAINER Bastian Bringenberg <bastian@agentur-pottkinder.de>
 
 # Required for all services
-ENV FILE=go1.7.4.linux-amd64.tar.gz
-ENV FILEURL=https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz
-ENV PATH=$PATH:/usr/local/go/bin
-ENV GOPATH=/tmp
-ENV GOBIN=/tmp/go
+#ENV FILE=go1.7.4.linux-amd64.tar.gz
+#ENV FILEURL=https://storage.googleapis.com/golang/go1.7.4.linux-amd64.tar.gz
+#ENV PATH=$PATH:/usr/local/go/bin
+#ENV GOPATH=/tmp
+#ENV GOBIN=/tmp/go
 ENV DEBIAN_FRONTEND=noninteractive
-ENV BUILD_PACKAGES="wget tar git"
+ENV BUILD_PACKAGES="wget tar git golang"
 
 # Please change!
 ENV POTTKINDER_REDIRECT=https://www.agentur-pottkinder.de/
@@ -17,12 +17,8 @@ ENV POTTKINDER_REDIRECT=https://www.agentur-pottkinder.de/
 RUN apt-get update
 RUN apt-get install -y $BUILD_PACKAGES
 
-# Install GO
-WORKDIR /tmp
-RUN wget $FILEURL
-RUN tar -C /usr/local -xzf $FILE
-
 # Install Go Bundle
+WORKDIR /src
 RUN mkdir /tmp/go
 RUN go get -u github.com/miekg/dns
 ADD static/server.go /tmp
@@ -41,4 +37,4 @@ RUN mv go/server /server
 
 # Run http server on port 8080
 # EXPOSE  80
-CMD ["/server"]
+CMD ["go install server.go -o /build/"]
